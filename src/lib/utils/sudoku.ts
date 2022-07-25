@@ -149,7 +149,13 @@ export function resetSudoku({ current, original }: { current: string[][]; origin
 		});
 	});
 
-	sudoku.set({ ...get(sudoku), puzzle: original.map((o) => o.slice()), original, hints: 3 });
+	sudoku.set({
+		...get(sudoku),
+		puzzle: original.map((o) => o.slice()),
+		original,
+		hints: 3,
+		reset: true
+	});
 
 	resetCheckSudoku();
 }
