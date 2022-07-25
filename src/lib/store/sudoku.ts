@@ -1,3 +1,4 @@
+import { capitalize } from '@utils/string';
 import { difficulty, generateSudoku } from '@utils/sudoku';
 import { writable, type Writable } from 'svelte/store';
 
@@ -5,7 +6,10 @@ const initialState = {
 	...generateSudoku({ difficulty: difficulty.EASY }),
 	autoCheck: false,
 	highlight: null,
-	hints: 3
+	hints: 3,
+	paused: false,
+	reset: false,
+	difficulty: capitalize(difficulty.EASY)
 };
 
 export type Sudoku = {
@@ -15,6 +19,9 @@ export type Sudoku = {
 	autoCheck: boolean;
 	highlight: HTMLInputElement | null;
 	hints: number;
+	paused: boolean;
+	reset: boolean;
+	difficulty: string;
 };
 
 export const sudoku: Writable<Sudoku> = writable({
