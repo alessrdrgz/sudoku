@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { sudoku } from '@store/sudoku';
 	import SudokuCell from '@sudoku/sudoku-cell.svelte';
 
 	export let box: Array<string>;
@@ -7,6 +8,10 @@
 
 {#each box as n, index}
 	<div class="flex-grow flex-shrink-0 basis-1/3">
-		<SudokuCell value={n} box={boxIndex} {index} />
+		{#if $sudoku.paused}
+			<SudokuCell value={''} box={boxIndex} {index} />
+		{:else}
+			<SudokuCell value={n} box={boxIndex} {index} />
+		{/if}
 	</div>
 {/each}
