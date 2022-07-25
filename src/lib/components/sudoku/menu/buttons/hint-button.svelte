@@ -5,7 +5,7 @@
 	import { getHint } from '@utils/sudoku';
 
 	const handleClick = () => {
-		if ($sudoku.hints > 0) {
+		if ($sudoku.hints > 0 && $sudoku.highlight !== null) {
 			getHint();
 			$sudoku.hints--;
 		}
