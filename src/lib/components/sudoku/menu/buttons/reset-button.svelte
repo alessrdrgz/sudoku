@@ -7,6 +7,6 @@
 	const handleReset = () => resetSudoku({ current: $sudoku.puzzle, original: $sudoku.original });
 </script>
 
-<SudokuButton text="Reiniciar" on:click={handleReset}>
+<SudokuButton text="Reiniciar" on:click={handleReset} disabled={$sudoku.paused}>
 	<ResetIcon class="fill-blue-400" />
 </SudokuButton>

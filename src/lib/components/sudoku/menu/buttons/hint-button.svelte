@@ -12,7 +12,7 @@
 	};
 </script>
 
-<SudokuButton text="Pista" on:click={handleClick} disabled={$sudoku.hints === 0}>
+<SudokuButton text="Pista" on:click={handleClick} disabled={$sudoku.hints === 0 || $sudoku.paused}>
 	<div class="absolute w-4 h-4 text-xs text-white bg-blue-400 rounded-full -top-2 -right-1">
 		{$sudoku.hints}
 	</div>
