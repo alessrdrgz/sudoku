@@ -1,0 +1,27 @@
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"paths": {
+			"@components": ["src/lib/components"],
+			"@components/*": ["src/lib/components/*"],
+			"@store": ["src/lib/store"],
+			"@store/*": ["src/lib/store/*"],
+			"@utils": ["src/lib/utils"],
+			"@utils/*": ["src/lib/utils/*"],
+			"@icons": ["src/lib/components/icons"],
+			"@icons/*": ["src/lib/components/icons/*"],
+			"@sudoku": ["src/lib/components/sudoku"],
+			"@sudoku/*": ["src/lib/components/sudoku/*"],
+			"@styles": ["src/styles"],
+			"@styles/*": ["src/styles/*"]
+		}
+	}
+}
