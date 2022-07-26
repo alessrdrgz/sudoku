@@ -24,7 +24,11 @@
 			(target as HTMLInputElement).classList.remove('text-red-600');
 			(target as HTMLInputElement).classList.remove('bg-red-100');
 
-			if ($sudoku.autoCheck) {
+			const finished = $sudoku.puzzle.every(
+				(box) => box.filter((cell) => cell !== '').length === 9
+			);
+
+			if ($sudoku.autoCheck || finished) {
 				checkSudoku({
 					puzzle: $sudoku.puzzle,
 					solution: $sudoku.solution
