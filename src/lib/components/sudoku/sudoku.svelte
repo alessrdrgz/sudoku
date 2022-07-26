@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { sudoku } from '@store/sudoku';
+	import SudokuFinishedScreen from '@sudoku/screens/sudoku-finished-screen.svelte';
+	import SudokuPausedScreen from '@sudoku/screens/sudoku-paused-screen.svelte';
 	import SudokuBox from '@sudoku/sudoku-box.svelte';
-	import SudokuPausedScreen from '@sudoku/sudoku-paused-screen.svelte';
 	export let puzzle: Array<Array<string>>;
 </script>
 
@@ -15,7 +16,9 @@
 		</div>
 	{/each}
 
-	{#if $sudoku.paused}
+	{#if $sudoku.paused && !$sudoku.finished}
 		<SudokuPausedScreen />
+	{:else if $sudoku.finished}
+		<SudokuFinishedScreen />
 	{/if}
 </div>
