@@ -18,4 +18,8 @@
 	};
 </script>
 
-<Toggle text="Comprobar errores automáticamente" on:change={handleChange} />
+<Toggle
+	text="Comprobar errores automáticamente"
+	on:change={handleChange}
+	disabled={$sudoku.paused || $sudoku.finished}
+/>
