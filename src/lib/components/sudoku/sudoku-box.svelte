@@ -8,7 +8,7 @@
 
 {#each box as n, index}
 	<div class="flex-grow flex-shrink-0 basis-1/3">
-		{#if $sudoku.paused}
+		{#if $sudoku.paused || $sudoku.finished}
 			<SudokuCell value={''} box={boxIndex} {index} />
 		{:else}
 			<SudokuCell value={n} box={boxIndex} {index} />
