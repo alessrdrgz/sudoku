@@ -9,7 +9,8 @@ const initialState = {
 	hints: 3,
 	paused: false,
 	reset: false,
-	difficulty: capitalize(difficulty.EASY)
+	difficulty: capitalize(difficulty.EASY),
+	finished: false
 };
 
 export type Sudoku = {
@@ -22,6 +23,7 @@ export type Sudoku = {
 	paused: boolean;
 	reset: boolean;
 	difficulty: string;
+	finished: boolean;
 };
 
 export const sudoku: Writable<Sudoku> = writable({
