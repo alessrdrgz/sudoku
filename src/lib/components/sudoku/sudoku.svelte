@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { sudoku } from '@store/sudoku';
+	import SudokuErrorsScreen from '@sudoku/screens/sudoku-errors-screen.svelte';
 	import SudokuFinishedScreen from '@sudoku/screens/sudoku-finished-screen.svelte';
 	import SudokuPausedScreen from '@sudoku/screens/sudoku-paused-screen.svelte';
 	import SudokuBox from '@sudoku/sudoku-box.svelte';
@@ -16,7 +17,9 @@
 		</div>
 	{/each}
 
-	{#if $sudoku.paused && !$sudoku.finished}
+	{#if $sudoku.errors >= 3}
+		<SudokuErrorsScreen />
+	{:else if $sudoku.paused && !$sudoku.finished}
 		<SudokuPausedScreen />
 	{:else if $sudoku.finished}
 		<SudokuFinishedScreen />
