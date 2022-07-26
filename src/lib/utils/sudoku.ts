@@ -115,8 +115,10 @@ export function highlighting(e: HTMLInputElement) {
 }
 
 export function checkSudoku({ puzzle, solution }: { puzzle: string[][]; solution: string[][] }) {
+	let finished = true;
 	puzzle.forEach((box, boxIndex) => {
 		box.forEach((n, cellIndex) => {
+			if (n !== solution[boxIndex][cellIndex]) finished = false;
 			if (n !== solution[boxIndex][cellIndex] && n !== '') {
 				const row = getRow({ box: boxIndex, index: cellIndex });
 				const col = getCol({ box: boxIndex, index: cellIndex });
@@ -127,6 +129,13 @@ export function checkSudoku({ puzzle, solution }: { puzzle: string[][]; solution
 			}
 		});
 	});
+
+	if (finished)
+		sudoku.update((su) => {
+			su.finished = true;
+			su.paused = true;
+			return su;
+		});
 }
 
 export function resetCheckSudoku() {
@@ -154,7 +163,8 @@ export function resetSudoku({ current, original }: { current: string[][]; origin
 		puzzle: original.map((o) => o.slice()),
 		original,
 		hints: 3,
-		reset: true
+		reset: true,
+		finished: false
 	});
 
 	resetCheckSudoku();
