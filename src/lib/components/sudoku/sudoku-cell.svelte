@@ -21,6 +21,14 @@
 			const { value } = target as HTMLInputElement;
 			$sudoku.puzzle[box][index] = value.toString();
 
+			if ($sudoku.puzzle[box][index] !== $sudoku.solution[box][index]) {
+				sudoku.update((su) => {
+					su.errors++;
+					if (su.errors >= 3) su.paused = true;
+					return su;
+				});
+			}
+
 			(target as HTMLInputElement).classList.remove('text-red-600');
 			(target as HTMLInputElement).classList.remove('bg-red-100');
 
