@@ -74,7 +74,7 @@
 <section class="flex flex-row items-center gap-2">
 	<p>{formatTime(lapse)}</p>
 
-	<button on:click={handleClick} disabled={$sudoku.finished}>
+	<button on:click={handleClick} disabled={$sudoku.finished || $sudoku.errors >= 3}>
 		<div class="h-4 w-4 bg-gray-400 rounded-full">
 			{#if $sudoku.paused}
 				<PlayIcon class="fill-white" />
