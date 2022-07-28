@@ -5,6 +5,7 @@
 	export let value = '';
 	export let box: number;
 	export let index: number;
+	export let disabled = false;
 	const border =
 		index === 1 || index === 7
 			? 'border-l border-r'
@@ -24,7 +25,12 @@
 			if ($sudoku.puzzle[box][index] !== $sudoku.solution[box][index]) {
 				sudoku.update((su) => {
 					su.errors++;
-					if (su.errors >= 3) su.paused = true;
+					if (su.errors >= 3) {
+						su.paused = true;
+						setTimeout(() => {
+							checkSudoku({ puzzle: su.puzzle, solution: su.solution });
+						}, 100);
+					}
 					return su;
 				});
 			}
@@ -52,7 +58,7 @@
 	min="1"
 	max="9"
 	{value}
-	readonly={value !== ''}
+	readonly={value !== '' || disabled}
 	data-row={getRow({ box, index })}
 	data-col={getCol({ box, index })}
 	use:highlighting
