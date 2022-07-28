@@ -165,6 +165,7 @@ export function resetSudoku({ current, original }: { current: string[][]; origin
 		hints: 3,
 		reset: true,
 		finished: false,
+		paused: false,
 		errors: 0
 	});
 
